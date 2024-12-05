@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AlinaFat.ProductPage"
+             Title="Product Page">
+    <ContentPage.Content>
+        <StackLayout Margin="20" Spacing="15">
+            <Editor Placeholder="Enter product name"
+                    Text="{Binding Description}"
+                    HeightRequest="50" />
+
+            <Grid ColumnSpacing="10" RowSpacing="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Save Product"
+                        MaximumWidthRequest="200"
+                        Clicked="OnSaveButtonClicked" />
+
+                <Button Text="Delete Product"
+                        Grid.Column="1"
+                        MaximumWidthRequest="200"
+                        Clicked="OnDeleteButtonClicked" />
+
+                <ListView Grid.Row="1" Grid.ColumnSpan="2"
+                          x:Name="listView"
+                          Margin="0,10,0,10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Description}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Button Text="Add to Shop List"
+                        Grid.Row="2"
+                        MaximumWidthRequest="200"
+                        Clicked="OnAddButtonClicked" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
